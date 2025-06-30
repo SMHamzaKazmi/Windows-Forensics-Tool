@@ -1,0 +1,148 @@
+﻿<Window x:Class="WindowsForensicsTool.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WindowsForensicsTool"
+        mc:Ignorable="d"
+        Title="Windows Forensics Software" Height="500" Width="900">
+    <Grid>
+        <TabControl>
+            <TabItem Header="Activity History">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.5*"></RowDefinition>
+                        <RowDefinition Height="0.5*"></RowDefinition>
+                        <RowDefinition Height="0.5*"></RowDefinition>
+                        <RowDefinition Height="3*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Row="0" Grid.Column="0">
+                        <RadioButton x:Name="AccessedFilesRadioButton" Content="Accessed Files" GroupName="ActivityHistory" HorizontalAlignment="Center" VerticalAlignment="Bottom" IsChecked="True" Checked="ActivityHistoryRadioButtons_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="0" Grid.Column="1">
+                        <RadioButton x:Name="CreatedFilesRadioButton" Content="Created Files" GroupName="ActivityHistory" HorizontalAlignment="Center" VerticalAlignment="Bottom" Checked="ActivityHistoryRadioButtons_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="0" Grid.Column="2">
+                        <RadioButton x:Name="ModifiedFilesRadioButton" Content="Modified Files" GroupName="ActivityHistory" HorizontalAlignment="Center" VerticalAlignment="Bottom" Checked="ActivityHistoryRadioButtons_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="0" Grid.Column="3">
+                        <RadioButton x:Name="BrowserHistoryRadioButton" Content="Browser History" GroupName="ActivityHistory" HorizontalAlignment="Center" VerticalAlignment="Bottom" Checked="ActivityHistoryRadioButtons_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="1" Grid.Column="0">
+                        <RadioButton x:Name="PowershellCommandsRadioButton" Content="PowerShell Commands" GroupName="ActivityHistory" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="ActivityHistoryRadioButtons_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="1" Grid.Column="1">
+                        <RadioButton x:Name="RunCommandsRadioButton" Content="Run Commands" GroupName="ActivityHistory" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="ActivityHistoryRadioButtons_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="1" Grid.Column="2">
+                        <RadioButton x:Name="UsbsHistoryRadioButton" Content="USBs History" GroupName="ActivityHistory" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="ActivityHistoryRadioButtons_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="1" Grid.Column="3">
+                        <RadioButton x:Name="WifiHistoryRadioButton" Content="WiFi History" GroupName="ActivityHistory" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="ActivityHistoryRadioButtons_Checked"/>
+                    </Grid>
+                    <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <Label Content="Start Date:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <DatePicker x:Name="StartDatePicker" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                        <Grid Grid.Column="2">
+                            <Label Content="End Date:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                        <Grid Grid.Column="3">
+                            <DatePicker x:Name="EndDatePicker" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                        <Grid Grid.Column="4">
+                            <Label Content="Directory:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                        <Grid Grid.Column="5">
+                            <TextBox x:Name="ActivityHistoryDirectoryTextBox" HorizontalAlignment="Stretch" TextWrapping="NoWrap" VerticalAlignment="Center"/>
+                        </Grid>
+                        <Grid Grid.Column="6">
+                            <Button Content="Search" Width="65" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center" Click="ActivityHistorySearchButton_Click"/>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4">
+                        <DataGrid x:Name="ActivityHistoryDataGrid"/>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Extension Mismatch Detection">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.20*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Row="0" Grid.Column="0">
+                        <Label Content="Directory:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Grid Grid.Row="0" Grid.Column="1">
+                        <TextBox x:Name="ExtensionMismatchDirectoryTextBox" HorizontalAlignment="Left" TextWrapping="NoWrap" VerticalAlignment="Center" Width="200"/>
+                    </Grid>
+                    <Grid Grid.Row="0" Grid.Column="2">
+                        <Button Content="Search" Width="80" Height="25" HorizontalAlignment="Left" VerticalAlignment="Center" Click="ExtensionMismatchSearchButton_Click"/>
+                    </Grid>
+                    <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
+                        <DataGrid x:Name="ExtensionMismatchDataGrid"/>
+                    </Grid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Keyword Search">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.20*"></RowDefinition>
+                        <RowDefinition Height="*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0">
+                            <Label Content="Directory:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <TextBox x:Name="KeywordSearchDirectoryTextBox" HorizontalAlignment="Stretch" TextWrapping="NoWrap" VerticalAlignment="Center"/>
+                        </Grid>
+                        <Grid Grid.Column="2">
+                            <Label Content="Keyword(s):" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                        <Grid Grid.Column="3">
+                            <TextBox x:Name="KeywordSearchKeywordTextBox" HorizontalAlignment="Stretch" TextWrapping="NoWrap" VerticalAlignment="Center"/>
+                        </Grid>
+                        <Grid Grid.Column="4">
+                            <Button Content="Search" Width="80" Height="25" HorizontalAlignment="Center" VerticalAlignment="Center" Click="KeywordSearchSearchButton_Click"/>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <DataGrid x:Name="KeywordSearchDataGrid"/>
+                    </Grid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
